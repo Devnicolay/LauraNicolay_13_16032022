@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/Header/Header";
 import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import User from "./pages/User";
 import Error404 from "./pages/Error404";
+import Footer from "./components/Footer/Footer";
 
 const home = "/";
 const signIn = "/sign-in";
@@ -14,7 +14,6 @@ const error = "/error";
 function App() {
   return (
     <Router>
-      <Header />
       <Routes>
         <Route exact path={home} element={<Home />}></Route>
         <Route path={signIn} element={<SignIn />}></Route>
@@ -22,6 +21,7 @@ function App() {
         <Route path={error} element={<Error404 />}></Route>
         <Route path="*" element={<Error404 />}></Route>
       </Routes>
+      <Footer />
     </Router>
   );
 }
