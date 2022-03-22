@@ -13,7 +13,7 @@ function HeaderUserPage() {
         </Link>
         <h1 className="sr-only">Argent Bank</h1>
         <div>
-          <Link className="main-nav-item" to={"/user/:id"}>
+          <Link className="main-nav-item" to={"/profil/:id"}>
             <FontAwesomeIcon icon={faUserCircle} />
             Tony
           </Link>

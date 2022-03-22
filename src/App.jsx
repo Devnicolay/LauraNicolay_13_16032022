@@ -7,8 +7,8 @@ import Error404 from "./pages/Error404";
 import Footer from "./components/Footer/Footer";
 
 const home = "/";
-const signIn = "/sign-in";
-const user = "/user/:id";
+const signIn = "/login";
+const user = "/profil";
 const error = "/error";
 
 function App() {
