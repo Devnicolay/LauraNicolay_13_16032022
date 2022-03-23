@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Error404 from "./pages/Error404";
 import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
 
 const home = "/";
 const login = "/login";
@@ -14,6 +15,7 @@ const error = "/error";
 const App = () => {
   return (
     <Router>
+      <Header />
       <Routes>
         <Route exact path={home} element={<Home />}></Route>
         <Route path={login} element={<Login />}></Route>
