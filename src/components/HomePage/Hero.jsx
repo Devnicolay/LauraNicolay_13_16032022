@@ -1,6 +1,6 @@
 import React from "react";
 
-function Hero() {
+const Hero = () => {
   return (
     <div className="hero">
       <section className="hero-content">
@@ -12,6 +12,6 @@ function Hero() {
       </section>
     </div>
   );
-}
+};
 
 export default Hero;

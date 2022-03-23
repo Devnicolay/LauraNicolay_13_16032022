@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import HeaderUserPage from "../components/HeaderUserPage/HeaderUserPage";
-import Account from "../components/UserPage/Account";
-import UserHeader from "../components/UserPage/UserHeader";
+import Account from "../components/ProfilePage/Account";
+import UserHeader from "../components/ProfilePage/UserHeader";
+import { getUserData } from "../stateManagement/authService";
 
-function User() {
+const Profile = () => {
+  const token = useSelector((state) => state.auth.token);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    getUserData(token).then((data) => {
+      dispatch({
+        type: "LOGIN",
+        payload: data,
+      });
+    });
+  }, []);
+
   return (
     <div>
       <HeaderUserPage />
@@ -28,6 +43,6 @@ function User() {
       </main>
     </div>
   );
-}
+};
 
-export default User;
+export default Profile;

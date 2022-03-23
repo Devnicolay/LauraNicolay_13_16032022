@@ -1,32 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { login, reset } from "../../stateManagement/authSlice";
+import { login } from "../../stateManagement/authService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 
-function SignInContent() {
+const LoginContent = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  const { email, password } = formData;
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { user, isError, isSuccess, message } = useSelector(
+  const { user, isError, isLoggedIn, message } = useSelector(
     (state) => state.auth
   );
 
   useEffect(() => {
-    if (isSuccess || user) {
+    if (isLoggedIn) {
       navigate("/profil");
     }
-
-    dispatch(reset());
-  }, [user, isError, isSuccess, message, navigate, dispatch]);
+  }, [isLoggedIn]);
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -38,14 +34,13 @@ function SignInContent() {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    const userData = {
-      email,
-      password,
-    };
-
-    console.log(userData);
-
-    dispatch(login(userData));
+    login(formData).then((data) => {
+      dispatch({
+        type: "USER_TOKEN",
+        payload: data.body.token,
+      });
+      navigate("/profil");
+    });
   };
 
   return (
@@ -69,6 +64,6 @@ function SignInContent() {
       </form>
     </section>
   );
-}
+};
 
-export default SignInContent;
+export default LoginContent;

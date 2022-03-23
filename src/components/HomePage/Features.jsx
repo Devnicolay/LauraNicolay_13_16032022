@@ -3,7 +3,7 @@ import iconChat from "../../assets/img/icon-chat.png";
 import iconMoney from "../../assets/img/icon-money.png";
 import iconSecurity from "../../assets/img/icon-security.png";
 
-function Features() {
+const Features = () => {
   return (
     <section className="features">
       <h2 className="sr-only">Features</h2>
@@ -30,6 +30,6 @@ function Features() {
       </div>
     </section>
   );
-}
+};
 
 export default Features;

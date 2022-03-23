@@ -1,15 +1,24 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3001/login";
+const API_USER_URL = "http://localhost:3001/api/v1/user/profile";
+const API_URL = "http://localhost:3001/api/v1/user/login";
+
+// User data
+export const getUserData = async (userToken) => {
+  const response = await axios.post(
+    API_USER_URL,
+    {},
+    {
+      headers: { authorization: "Bearer" + userToken },
+    }
+  );
+
+  return response.data;
+};
 
 // Login user
-const login = async (userData) => {
-  console.log(userData);
+export const login = async (userData) => {
   const response = await axios.post(API_URL, userData);
-
-  if (response.data) {
-    localStorage.setItem("user", JSON.stringify(response.data));
-  }
 
   return response.data;
 };
@@ -18,10 +27,3 @@ const login = async (userData) => {
 const logout = () => {
   localStorage.removeItem("user");
 };
-
-const authService = {
-  login,
-  logout,
-};
-
-export default authService;

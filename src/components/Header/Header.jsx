@@ -4,7 +4,7 @@ import Logo from "./Logo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 
-function Header() {
+const Header = () => {
   return (
     <div>
       <nav className="main-nav">
@@ -21,6 +21,6 @@ function Header() {
       </nav>
     </div>
   );
-}
+};
 
 export default Header;

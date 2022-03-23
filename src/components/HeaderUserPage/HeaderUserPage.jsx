@@ -4,7 +4,7 @@ import Logo from "../Header/Logo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle, faSignOut } from "@fortawesome/free-solid-svg-icons";
 
-function HeaderUserPage() {
+const HeaderUserPage = () => {
   return (
     <div>
       <nav className="main-nav">
@@ -25,6 +25,6 @@ function HeaderUserPage() {
       </nav>
     </div>
   );
-}
+};
 
 export default HeaderUserPage;

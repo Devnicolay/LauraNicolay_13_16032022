@@ -1,6 +1,6 @@
 import React from "react";
 
-function Account({ title, amount, amountDescription }) {
+const Account = ({ title, amount, amountDescription }) => {
   return (
     <section className="account">
       <div className="account-content-wrapper">
@@ -13,6 +13,6 @@ function Account({ title, amount, amountDescription }) {
       </div>
     </section>
   );
-}
+};
 
 export default Account;

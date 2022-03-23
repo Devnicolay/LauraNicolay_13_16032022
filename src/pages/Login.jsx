@@ -1,16 +1,16 @@
 import React from "react";
 import Header from "../components/Header/Header";
-import SignInContent from "../components/SignInPage/SignInContent";
+import LoginContent from "../components/LoginPage/LoginContent";
 
-function SignIn() {
+const Login = () => {
   return (
     <div>
       <Header />
       <main className="main bg-dark">
-        <SignInContent />
+        <LoginContent />
       </main>
     </div>
   );
-}
+};
 
-export default SignIn;
+export default Login;

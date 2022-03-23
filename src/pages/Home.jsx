@@ -3,7 +3,7 @@ import Header from "../components/Header/Header";
 import Features from "../components/HomePage/Features";
 import Hero from "../components/HomePage/Hero";
 
-function Home() {
+const Home = () => {
   return (
     <div>
       <Header />
@@ -13,6 +13,6 @@ function Home() {
       </main>
     </div>
   );
-}
+};
 
 export default Home;
