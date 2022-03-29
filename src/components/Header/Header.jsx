@@ -3,9 +3,17 @@ import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle, faSignOut } from "@fortawesome/free-solid-svg-icons";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 const Header = () => {
+  const OnLogout = (e) => {
+    const dispatch = useDispatch();
+
+    dispatch({
+      type: "LOGOUT",
+    });
+  };
+
   const { user } = useSelector((state) => state.auth);
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   return (
@@ -17,11 +25,11 @@ const Header = () => {
         <h1 className="sr-only">Argent Bank</h1>
         {isLoggedIn ? (
           <div>
-            <Link className="main-nav-item" to={"/profil/:id"}>
+            <Link className="main-nav-item" to={"/profil"}>
               <FontAwesomeIcon icon={faUserCircle} />
               {user && user.body.firstName}
             </Link>
-            <Link className="main-nav-item" to={"/"}>
+            <Link className="main-nav-item" to={"/"} onClick={OnLogout}>
               <FontAwesomeIcon icon={faSignOut} />
               Sign Out
             </Link>

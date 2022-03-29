@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import Account from "../components/ProfilePage/Account";
@@ -9,14 +9,12 @@ const Profile = () => {
   const token = useSelector((state) => state.auth.token);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    getUserData(token).then((data) => {
-      dispatch({
-        type: "LOGIN",
-        payload: data,
-      });
+  getUserData(token).then((data) => {
+    dispatch({
+      type: "LOGIN",
+      payload: data,
     });
-  }, []);
+  });
 
   return (
     <main className="main bg-dark">

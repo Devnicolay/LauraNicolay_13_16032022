@@ -25,6 +25,18 @@ export const userReducer = (state = initialState, action) => {
         user: null,
         isLoggedIn: false,
       };
+    case "EDIT_NAME":
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          body: {
+            ...state.user.body,
+            firstName: action.payload.firstname,
+            lastName: action.payload.lastname,
+          },
+        },
+      };
     default:
       return state;
   }

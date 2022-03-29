@@ -23,7 +23,16 @@ export const login = async (userData) => {
   return response.data;
 };
 
-// Logout user
-const logout = () => {
-  localStorage.removeItem("user");
+// Edit user name
+export const editUserName = async (userName, userToken) => {
+  const response = await axios.put(
+    API_USER_URL,
+    {
+      firstName: userName.firstname,
+      lastName: userName.lastname,
+    },
+    { headers: { authorization: "Bearer" + userToken } }
+  );
+
+  return response.data;
 };
