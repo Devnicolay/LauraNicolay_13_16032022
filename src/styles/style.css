@@ -247,6 +247,13 @@ body {
   color: #fff;
   margin-bottom: 2rem;
 }
+.header .edit-name-wrapper input {
+  border-radius: 7px;
+}
+.header .edit-name-wrapper p {
+  color: red;
+  margin-top: 0;
+}
 
 .account {
   display: flex;

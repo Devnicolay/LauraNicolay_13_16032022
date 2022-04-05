@@ -1,8 +1,6 @@
 const initialState = {
   user: null,
-  isError: false,
   isLoggedIn: false,
-  message: "",
   token: null,
 };
 

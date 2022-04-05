@@ -4,7 +4,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { login } from "../../stateManagement/authService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import PropTypes from "prop-types";
 
+/**
+ *
+ * @param {boolean} isLoggedIn boolean for know if user is connected or not
+ * @returns form of login page
+ */
 const LoginContent = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -14,9 +20,7 @@ const LoginContent = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { user, isError, isLoggedIn, message } = useSelector(
-    (state) => state.auth
-  );
+  const { isLoggedIn } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -64,6 +68,10 @@ const LoginContent = () => {
       </form>
     </section>
   );
+};
+
+LoginContent.propTypes = {
+  isLoggedIn: PropTypes.bool,
 };
 
 export default LoginContent;

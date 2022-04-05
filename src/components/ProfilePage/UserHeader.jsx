@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { editUserName } from "../../stateManagement/authService";
+import PropTypes from "prop-types";
 
+/**
+ *
+ * @param {object} user user data
+ * @param {string} token token of user connected
+ * @returns firstname and lastname of user and can edited firstname and lastname with a form
+ */
 const UserHeader = () => {
   const [isEditedName, setIsEditedName] = useState(false);
 
@@ -24,10 +31,8 @@ const UserHeader = () => {
     }));
     if (e.target.id === "firstname") {
       setFirstname(e.target.value);
-      console.log(firstname);
     } else if (e.target.id === "lastname") {
       setLastname(e.target.value);
-      console.log(lastname);
     }
   };
 
@@ -35,13 +40,16 @@ const UserHeader = () => {
   const { user } = useSelector((state) => state.auth);
   const token = useSelector((state) => state.auth.token);
 
+  const [isFirstname, setIsFirstname] = useState("true");
+  const [isLastname, setIsLastname] = useState("true");
+
   const onSaveName = (e) => {
     if (!firstname) {
       e.preventDefault();
-      alert("Il est nécessaire d'indiquer un prénom.");
+      setIsFirstname("false");
     } else if (!lastname) {
       e.preventDefault();
-      alert("Il est nécessaire d'indiquer un nom.");
+      setIsLastname("false");
     } else {
       setIsEditedName(false);
       editUserName(formName, token);
@@ -49,6 +57,10 @@ const UserHeader = () => {
         type: "EDIT_NAME",
         payload: formName,
       });
+      setFirstname("");
+      setLastname("");
+      setIsFirstname("true");
+      setIsLastname("true");
     }
   };
 
@@ -63,25 +75,22 @@ const UserHeader = () => {
               <input
                 type="text"
                 id="firstname"
-                placeholder="firstname"
+                placeholder={user.body.firstName}
                 onChange={onChange}
               />
+              {isFirstname === "false" ? <p>Veuillez entrer un prénom</p> : ""}
             </div>
             <div className="edit-name-wrapper">
               <label htmlFor="lastname"></label>
               <input
                 type="text"
                 id="lastname"
-                placeholder="lastname"
+                placeholder={user.body.lastName}
                 onChange={onChange}
               />
+              {isLastname === "false" ? <p>Veuillez entrer un nom</p> : ""}
             </div>
-            <button
-              type="button"
-              className="edit-button"
-              data-disabled={!firstname}
-              onClick={onSaveName}
-            >
+            <button type="button" className="edit-button" onClick={onSaveName}>
               Save Name
             </button>
           </form>
@@ -100,6 +109,11 @@ const UserHeader = () => {
       )}
     </div>
   );
+};
+
+UserHeader.propTypes = {
+  user: PropTypes.object,
+  token: PropTypes.string,
 };
 
 export default UserHeader;

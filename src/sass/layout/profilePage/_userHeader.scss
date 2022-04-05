@@ -1,4 +1,13 @@
 .header {
   color: #fff;
   margin-bottom: 2rem;
+  .edit-name-wrapper {
+    input {
+      border-radius: 7px;
+    }
+    p {
+      color: red;
+      margin-top: 0;
+    }
+  }
 }

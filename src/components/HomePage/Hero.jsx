@@ -1,5 +1,9 @@
 import React from "react";
 
+/**
+ *
+ * @returns hero of home page
+ */
 const Hero = () => {
   return (
     <div className="hero">

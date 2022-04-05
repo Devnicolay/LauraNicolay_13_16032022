@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+/**
+ *
+ * @returns error page with link for return on home page
+ */
 const Error404 = () => {
   return (
     <div className="main-error404">
