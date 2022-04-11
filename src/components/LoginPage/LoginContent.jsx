@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
  * @returns form of login page
  */
 const LoginContent = () => {
-  const [formData, setFormData] = useState({
+  const [loginFormData, setLoginFormData] = useState({
     email: "",
     password: "",
   });
@@ -26,10 +26,10 @@ const LoginContent = () => {
     if (isLoggedIn) {
       navigate("/profil");
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, navigate]);
 
   const onChange = (e) => {
-    setFormData((prevState) => ({
+    setLoginFormData((prevState) => ({
       ...prevState,
       [e.target.id]: e.target.value,
     }));
@@ -38,9 +38,9 @@ const LoginContent = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    login(formData).then((data) => {
+    login(loginFormData).then((data) => {
       dispatch({
-        type: "USER_TOKEN",
+        type: "LOGIN",
         payload: data.body.token,
       });
       navigate("/profil");

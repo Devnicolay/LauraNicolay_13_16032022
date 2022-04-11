@@ -17,7 +17,7 @@ const Profile = () => {
 
   getUserData(token).then((data) => {
     dispatch({
-      type: "LOGIN",
+      type: "USER_DATA",
       payload: data,
     });
   });

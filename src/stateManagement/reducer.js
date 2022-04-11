@@ -1,18 +1,27 @@
+/**
+ * Initial state
+ */
 const initialState = {
   user: null,
   isLoggedIn: false,
   token: null,
 };
 
+/**
+ *
+ * @param {object} state initial state
+ * @param {object} action return to reducer how change state
+ * @returns
+ */
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "USER_TOKEN":
+    case "LOGIN":
       return {
         ...state,
         token: action.payload,
         isLoggedIn: true,
       };
-    case "LOGIN":
+    case "USER_DATA":
       return {
         ...state,
         user: action.payload,

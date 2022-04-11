@@ -10,10 +10,10 @@ import PropTypes from "prop-types";
  * @returns firstname and lastname of user and can edited firstname and lastname with a form
  */
 const UserHeader = () => {
-  const [isEditedName, setIsEditedName] = useState(false);
+  const [isOpenFormEditedName, setIsOpenFormEditedName] = useState(false);
 
   const editName = (e) => {
-    setIsEditedName(true);
+    setIsOpenFormEditedName(true);
   };
 
   const [formName, setFormName] = useState({
@@ -51,7 +51,7 @@ const UserHeader = () => {
       e.preventDefault();
       setIsLastname("false");
     } else {
-      setIsEditedName(false);
+      setIsOpenFormEditedName(false);
       editUserName(formName, token);
       dispatch({
         type: "EDIT_NAME",
@@ -66,7 +66,7 @@ const UserHeader = () => {
 
   return (
     <div className="header">
-      {isEditedName ? (
+      {isOpenFormEditedName ? (
         <>
           <h1>Welcome back</h1>
           <form>
